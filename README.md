@@ -3,6 +3,7 @@ Made with Vue 2
 
 Requirement:
 - node & npm
+- yarn
 - vue cli
 - rust/cargo
 
@@ -12,6 +13,7 @@ Prototype figma: https://www.figma.com/proto/yHQZTSQ6zMPzECd3RONrCe/Tugas-PPS-2?
  
 ```
 cd simta
+yarn config set ignore-engines true
 npm install
 npm run serve
 ```
