@@ -1,5 +1,5 @@
 # simta-frontend
-Made with Vue 2
+Made with Vue 2. By default runs on http://localhost:8080
 
 Requirement:
 - node & npm
