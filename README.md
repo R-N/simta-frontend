@@ -2,9 +2,9 @@
 Made with Vue 2
 
 Requirement:
--node & npm
--vue cli
--rust/cargo
+- node & npm
+- vue cli
+- rust/cargo
 
 Ref: https://github.com/tauri-apps/vue-cli-plugin-tauri
 
