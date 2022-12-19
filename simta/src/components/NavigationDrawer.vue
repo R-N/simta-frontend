@@ -34,6 +34,7 @@
                         v-for="item in section.items"
                         :key="item.title"
                         link
+                        :to="item.route"
                     >
                         <v-list-item-icon>
                             <v-icon small>{{ item.icon }}</v-icon>
@@ -65,7 +66,7 @@ export default class NavigationDrawer extends Vue {
                 { title: 'Baru', icon: 'mdi-circle' },
                 { title: 'Bimbingan', icon: 'mdi-triangle' },
                 { title: 'Sidang', icon: 'mdi-square' },
-                { title: 'Revisi', icon: 'mdi-pentagon', badge: 1 }
+                { title: 'Revisi', icon: 'mdi-pentagon', badge: 10, route: "/proposal/revisi" }
             ]
         },
         { 
@@ -73,7 +74,7 @@ export default class NavigationDrawer extends Vue {
             items: [
                 { title: 'Bimbingan', icon: 'mdi-circle' },
                 { title: 'Sidang', icon: 'mdi-triangle' },
-                { title: 'Revisi', icon: 'mdi-square', badge: 1 }
+                { title: 'Revisi', icon: 'mdi-square', badge: 10, route: "/ta/revisi" }
             ]
         },
         { 
