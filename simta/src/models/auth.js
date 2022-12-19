@@ -1,9 +1,10 @@
 import axios from 'axios'
 import store from "@/store"
+import { backend_address } from "@/constants"
 const login = async (username="dosen1", password="dosen") => {
     return axios
         .post(
-            'http://localhost:5000/user/login',
+            `${backend_address}/user/login`,
             { username, password }
         )
         .then(response => {

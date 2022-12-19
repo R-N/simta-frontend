@@ -1,6 +1,7 @@
 import axios from 'axios'
 import store from "@/store"
 import auth from "@/models/auth"
+import { backend_address } from "@/constants"
 
 const TAType = {
     1: "Request",
@@ -57,7 +58,7 @@ const fetch_sidang_revisi = async (taType=2, taStatus=4, status=3) => {
         await auth.login()
     return axios
         .get(
-            'http://localhost:5000/sidang/',
+            `${backend_address}/sidang/`,
             { 
                 headers: {"Authorization": `Bearer ${store.mystore.apiKey}`},
                 params: { 

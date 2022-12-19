@@ -2,6 +2,7 @@ import axios from 'axios'
 import store from "@/store"
 import auth from "@/models/auth"
 import FileSaver from "file-saver"
+import { backend_address } from "@/constants"
 
 const MHS_LEVEL = {
     1: "S1",
@@ -21,7 +22,7 @@ const fetch_revisi = async (sidangId) => {
         await auth.login()
     return axios
         .get(
-            `http://localhost:5000/sidang/${sidangId}/revisi`,
+            `${backend_address}/sidang/${sidangId}/revisi`,
             { 
                 headers: {"Authorization" : `Bearer ${store.mystore.apiKey}`}
             }
@@ -44,7 +45,7 @@ const terima_revisi = async (revisiId) => {
         await auth.login()
     return axios
         .post(
-            `http://localhost:5000/revisi/${revisiId}/terima`,
+            `${backend_address}/revisi/${revisiId}/terima`,
             {},
             { 
                 headers: {"Authorization" : `Bearer ${store.mystore.apiKey}`}
@@ -61,7 +62,7 @@ const tolak_revisi = async (revisiId, detail, file_name=null) => {
         await auth.login()
     return axios
         .post(
-            `http://localhost:5000/revisi/${revisiId}/tolak`,
+            `${backend_address}/revisi/${revisiId}/tolak`,
             {
                 detail,
                 file_name
@@ -81,7 +82,7 @@ const upload_file_penolakan = async(revisiId, file) => {
     formData.append("file", file);
     return axios
         .put(
-            `http://localhost:5000/revisi/${revisiId}/penolakan/file`, 
+            `${backend_address}/revisi/${revisiId}/penolakan/file`, 
             formData, 
             {
                 headers: {
@@ -100,7 +101,7 @@ const upload_file_penolakan = async(revisiId, file) => {
 const download_file_penolakan = async(revisiId, fileName) => {
     return axios
         .get(
-            `http://localhost:5000/revisi/${revisiId}/penolakan/file`, 
+            `${backend_address}/revisi/${revisiId}/penolakan/file`, 
             {
                 headers: {
                     "Authorization" : `Bearer ${store.mystore.apiKey}`
@@ -116,7 +117,7 @@ const download_file_penolakan = async(revisiId, fileName) => {
 const download_file_revisi = async(revisiId, fileName) => {
     return axios
         .get(
-            `http://localhost:5000/revisi/${revisiId}/file`, 
+            `${backend_address}/revisi/${revisiId}/file`, 
             {
                 headers: {
                     "Authorization" : `Bearer ${store.mystore.apiKey}`
