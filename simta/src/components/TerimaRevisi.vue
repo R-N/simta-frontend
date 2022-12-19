@@ -46,13 +46,23 @@
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import revisi from "@/models/revisi"
 @Component({
+    emits: ["error"]
 })
 export default class TerimaRevisi extends Vue {
 	@Prop({ default: null }) revisi;
     dialog = false
     async terimaRevisi(){
-        let data = await revisi.terima_revisi(this.revisi.id)
-        window.location.reload(true)
+        try{
+            let data = await revisi.terima_revisi(this.revisi.id)
+            window.location.reload(true)
+        }catch(error){
+            if(error.response.data && error.response.data.show){
+                this.$EventBus.$emit('error', error.response.data);
+                this.dialog = false
+            }else{
+                throw error
+            }
+        }
     }
 }
 </script>

@@ -8,7 +8,10 @@ import { getModule } from 'vuex-module-decorators'
 import axios from 'axios'
 import auth from "@/models/auth"
 
+var EventBus = new Vue()
+
 Vue.prototype.$http = axios;
+Vue.prototype.$EventBus = EventBus;
 Vue.prototype.store = store;
 Vue.config.productionTip = false
 

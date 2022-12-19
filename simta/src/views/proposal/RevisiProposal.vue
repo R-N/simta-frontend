@@ -64,7 +64,16 @@ export default class RevisiProposal extends Vue {
     items = []
     
     async beforeMount() {
-        this.items = await ta.fetch_sidang_revisi(this.taType)
+        try{
+            this.items = await ta.fetch_sidang_revisi(this.taType)
+        }catch(error){
+            if(error.response.data && error.response.data.show){
+                this.$EventBus.$emit('error', error.response.data);
+                this.dialog = false
+            }else{
+                throw error
+            }
+        }
     }
     onClickItem(item){
         this.$router.push(`${this.route}/${item.id}`)

@@ -89,11 +89,20 @@ export default class TolakRevisi extends Vue {
         return null
     }
     async tolakRevisi(){
-        if (this.file){
-            let data = await revisi.upload_file_penolakan(this.revisi.id, this.file)
+        try{
+            if (this.file){
+                let data = await revisi.upload_file_penolakan(this.revisi.id, this.file)
+            }
+            let data = await revisi.tolak_revisi(this.revisi.id, this.detail, this.fileName)
+            window.location.reload(true)
+        }catch(error){
+            if(error.response.data && error.response.data.show){
+                this.$EventBus.$emit('error', error.response.data);
+                this.dialog = false
+            }else{
+                throw error
+            }
         }
-        let data = await revisi.tolak_revisi(this.revisi.id, this.detail, this.fileName)
-        window.location.reload(true)
     }
 }
 </script>

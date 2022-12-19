@@ -164,9 +164,18 @@ export default class DetailRevisi extends Vue {
     }
     
     async beforeMount() {
-        this.sidang = await revisi.fetch_revisi(this.$route.params.sidangId)
-        let revisiIndex = this.sidang.revisi.length-1
-        this.setRevisi(revisiIndex)
+        try{
+            this.sidang = await revisi.fetch_revisi(this.$route.params.sidangId)
+            let revisiIndex = this.sidang.revisi.length-1
+            this.setRevisi(revisiIndex)
+        }catch(error){
+            if(error.response.data && error.response.data.show){
+                this.$EventBus.$emit('error', error.response.data);
+                this.dialog = false
+            }else{
+                throw error
+            }
+        }
     }
 
     onClickItem(item){
@@ -176,11 +185,29 @@ export default class DetailRevisi extends Vue {
     }
 
     async downloadFilePenolakan(){
-        await revisi.download_file_penolakan(this.revisi.id, this.revisi.penolakan.file_name)
+        try{
+            await revisi.download_file_penolakan(this.revisi.id, this.revisi.penolakan.file_name)
+        }catch(error){
+            if(error.response.data && error.response.data.show){
+                this.$EventBus.$emit('error', error.response.data);
+                this.dialog = false
+            }else{
+                throw error
+            }
+        }
     }
 
     async downloadFileRevisi(){
-        await revisi.download_file_revisi(this.revisi.id, this.revisi.file_name)
+        try{
+            await revisi.download_file_revisi(this.revisi.id, this.revisi.file_name)
+        }catch(error){
+            if(error.response.data && error.response.data.show){
+                this.$EventBus.$emit('error', error.response.data);
+                this.dialog = false
+            }else{
+                throw error
+            }
+        }
     }
 }
 </script>
