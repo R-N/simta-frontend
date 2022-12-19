@@ -1,6 +1,8 @@
 # simta-frontend
 Made with Vue 2. By default runs on http://localhost:8080
 
+Sample deployment: https://simta-frontend-gn81wet4e-xstinky12-gmailcom.vercel.app/
+
 Requirement:
 - node & npm
 - yarn
