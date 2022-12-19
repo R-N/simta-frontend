@@ -156,6 +156,7 @@ export default class DetailRevisi extends Vue {
     onClickItem(item){
         let index = this.sidang.revisi.indexOf(item)
         this.setRevisi(index)
+        window.scrollTo(0,0);
     }
 }
 </script>
