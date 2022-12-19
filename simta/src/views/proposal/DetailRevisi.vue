@@ -73,7 +73,14 @@
                         </v-row>
                         <v-row v-if="this.penolakan.file_name">
                             <v-col sm=3 class="pb-1 pt-0">File:</v-col>
-                            <v-col class="pb-1 pt-0">{{this.penolakan.file_name}}</v-col>
+                            <v-col class="pb-1 pt-0">
+                                <a
+                                    link
+                                    @click="downloadFilePenolakan"
+                                >
+                                    {{this.penolakan.file_name}}
+                                </a>
+                            </v-col>
                         </v-row>
                         <v-row>
                             <v-col sm=3 class="pb-1 pt-0">Detail:</v-col>
@@ -159,5 +166,8 @@ export default class DetailRevisi extends Vue {
         window.scrollTo(0,0);
     }
 
+    async downloadFilePenolakan(){
+        await revisi.download_file_penolakan(this.revisi.id, this.revisi.penolakan.file_name)
+    }
 }
 </script>

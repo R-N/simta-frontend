@@ -1,6 +1,7 @@
 import axios from 'axios'
 import store from "@/store"
 import auth from "@/models/auth"
+import FileSaver from "file-saver"
 
 const MHS_LEVEL = {
     1: "S1",
@@ -95,7 +96,24 @@ const upload_file_penolakan = async(revisiId, file) => {
         })
 }
 
-const exports = { fetch_revisi, terima_revisi, tolak_revisi, upload_file_penolakan }
 
-export { fetch_revisi, terima_revisi, tolak_revisi, upload_file_penolakan }
+const download_file_penolakan = async(revisiId, fileName) => {
+    return axios
+        .get(
+            `http://localhost:5000/revisi/${revisiId}/penolakan/file`, 
+            {
+                headers: {
+                    "Authorization" : `Bearer ${store.mystore.apiKey}`
+                },
+                responseType: "blob"
+            }
+        )
+        .then(response => {
+            FileSaver.saveAs(response.data, fileName)
+        })
+}
+
+const exports = { fetch_revisi, terima_revisi, tolak_revisi, upload_file_penolakan, download_file_penolakan }
+
+export { fetch_revisi, terima_revisi, tolak_revisi, upload_file_penolakan, download_file_penolakan }
 export default exports
