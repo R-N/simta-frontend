@@ -2,7 +2,7 @@
     <v-container class="mx-3 my-3">
         <v-row>
             <v-container>
-                <span class="text-h3">Revisi Proposal</span>
+                <span class="text-h3">Revisi {{page}}</span>
             </v-container>
         </v-row>
         <v-row>
@@ -12,7 +12,7 @@
                     rounded
                 >
                     <v-card-title>
-                        Daftar Proposal Revisi
+                        Daftar {{page}} Revisi
                     </v-card-title>
                     <v-card-text>
                         <v-row class="d-flex">
@@ -49,6 +49,9 @@ import ta from "@/models/ta"
     }
 })
 export default class RevisiProposal extends Vue {
+	@Prop({ default: 2 }) taType
+	@Prop({ default: "/proposal/revisi" }) route
+	@Prop({ default: "Proposal" }) page
     search = ""
     headers = [
         { text: 'Mahasiswa', value: 'ta.mhs.name' },
@@ -61,10 +64,10 @@ export default class RevisiProposal extends Vue {
     items = []
     
     async beforeMount() {
-        this.items = await ta.fetch_sidang_revisi()
+        this.items = await ta.fetch_sidang_revisi(this.taType)
     }
     onClickItem(item){
-        this.$router.push(`/proposal/revisi/${item.id}`)
+        this.$router.push(`${this.route}/${item.id}`)
     }
 }
 </script>

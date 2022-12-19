@@ -35,7 +35,7 @@ const sort_sidang_revisi = (a, b) => {
     }
 }
 
-const fetch_sidang_revisi = async () => {
+const fetch_sidang_revisi = async (taType=2, taStatus=4, status=3) => {
     if (!store.mystore.apiKey)
         await auth.login()
     return axios
@@ -43,7 +43,11 @@ const fetch_sidang_revisi = async () => {
             'http://localhost:5000/sidang/',
             { 
                 headers: {"Authorization": `Bearer ${store.mystore.apiKey}`},
-                params: { "ta_type": 2 }
+                params: { 
+                    "ta_type": taType,
+                    "ta_status": taStatus,
+                    "status": status
+                }
             }
         )
         .then(response => {
