@@ -23,7 +23,9 @@
                         </v-row>
                         <v-row>
                             <v-col sm=3 class="pb-1 pt-0">NRP:</v-col>
-                            <v-col class="pb-1 pt-0">{{this.sidang.ta.mhs.nrp}}</v-col>
+                            <v-col class="pb-1 pt-0">
+                                <a>{{this.sidang.ta.mhs.nrp}}</a>
+                            </v-col>
                         </v-row>
                         <v-row>
                             <v-col sm=3 class="pb-1 pt-0">Judul:</v-col>
@@ -39,7 +41,14 @@
                         </v-row>
                         <v-row>
                             <v-col sm=3 class="pb-1 pt-0">File:</v-col>
-                            <v-col class="pb-1 pt-0">{{this.revisi.file_name}}</v-col>
+                            <v-col class="pb-1 pt-0">
+                                <a
+                                    link
+                                    @click="downloadFileRevisi"
+                                >
+                                    {{this.revisi.file_name}}
+                                </a>
+                            </v-col>
                         </v-row>
                         <v-row>
                             <v-col sm=3 class="pb-1 pt-0">Detail:</v-col>
@@ -168,6 +177,10 @@ export default class DetailRevisi extends Vue {
 
     async downloadFilePenolakan(){
         await revisi.download_file_penolakan(this.revisi.id, this.revisi.penolakan.file_name)
+    }
+
+    async downloadFileRevisi(){
+        await revisi.download_file_revisi(this.revisi.id, this.revisi.file_name)
     }
 }
 </script>

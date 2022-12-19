@@ -113,7 +113,22 @@ const download_file_penolakan = async(revisiId, fileName) => {
         })
 }
 
-const exports = { fetch_revisi, terima_revisi, tolak_revisi, upload_file_penolakan, download_file_penolakan }
+const download_file_revisi = async(revisiId, fileName) => {
+    return axios
+        .get(
+            `http://localhost:5000/revisi/${revisiId}/file`, 
+            {
+                headers: {
+                    "Authorization" : `Bearer ${store.mystore.apiKey}`
+                },
+                responseType: "blob"
+            }
+        )
+        .then(response => {
+            FileSaver.saveAs(response.data, fileName)
+        })
+}
+const exports = { fetch_revisi, terima_revisi, tolak_revisi, upload_file_penolakan, download_file_penolakan, download_file_revisi }
 
-export { fetch_revisi, terima_revisi, tolak_revisi, upload_file_penolakan, download_file_penolakan }
+export { fetch_revisi, terima_revisi, tolak_revisi, upload_file_penolakan, download_file_penolakan, download_file_revisi }
 export default exports
