@@ -21,7 +21,21 @@ const REVISI_STATUS = {
     4: "Ditolak"
 }
 
-const fetch_sidang = async () => {
+const sort_sidang_revisi = (a, b) => {
+    if (a.revisi_terakhir.status != b.revisi_terakhir.status){
+        if (a.revisi_terakhir.status == 2) return -1
+        if (b.revisi_terakhir.status == 2) return 1
+        return a.revisi_terakhir.status - b.status
+    }
+    if (a.revisi_terakhir.created_at != b.revisi_terakhir.created_at){
+        return a.revisi_terakhir.created_at < b.revisi_terakhir.created_at
+    }
+    if (a.ta.mhs.id != b.ta.mhs.id){
+        return a.ta.mhs.name < b.ta.mhs.name
+    }
+}
+
+const fetch_sidang_revisi = async () => {
     if (!store.mystore.apiKey)
         await auth.login()
     return axios
@@ -42,23 +56,11 @@ const fetch_sidang = async () => {
                     x.revisi_terakhir.status_str = REVISI_STATUS[x.revisi_terakhir.status]
                 }
             })
-            data.sort((a, b) => {
-                if (a.status != b.status){
-                    if (a.status == 2) return -1
-                    if (b.status == 2) return 1
-                    return a.status - b.status
-                }
-                if (a.created_at != b.created_at){
-                    return a.created_at < b.created_at
-                }
-                if (a.ta.mhs.id != b.ta.mhs.id){
-                    return a.ta.mhs.name < b.ta.mhs.name
-                }
-            })
+            data.sort(sort_sidang_revisi)
             return data
         })
 }
-const exports = { fetch_sidang }
+const exports = { fetch_sidang_revisi }
 
-export { fetch_sidang }
+export { fetch_sidang_revisi }
 export default exports

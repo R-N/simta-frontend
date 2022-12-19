@@ -61,7 +61,7 @@ export default class RevisiProposal extends Vue {
     items = []
     
     async beforeMount() {
-        this.items = await ta.fetch_sidang()
+        this.items = await ta.fetch_sidang_revisi()
     }
     onClickItem(item){
         this.$router.push(`/proposal/revisi/${item.id}`)
