@@ -2,6 +2,12 @@ import axios from 'axios'
 import store from "@/store"
 import auth from "@/models/auth"
 
+const TAType = {
+    1: "Request",
+    2: "Proposal",
+    3: "TA"
+}
+
 const MHS_LEVEL = {
     1: "S1",
     2: "S2",
@@ -22,7 +28,8 @@ const fetch_sidang = async () => {
         .get(
             'http://localhost:5000/sidang/',
             { 
-                headers: {"Authorization" : `Bearer ${store.mystore.apiKey}`}
+                headers: {"Authorization": `Bearer ${store.mystore.apiKey}`},
+                params: { "ta_type": 2 }
             }
         )
         .then(response => {
