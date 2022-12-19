@@ -21,6 +21,23 @@ const REVISI_STATUS = {
     4: "Ditolak"
 }
 
+const TA_STATUS = {
+    1: "Baru",
+    2: "Bimbingan",
+    3: "Sidang",
+    4: "Revisi",
+    5: "Selesai",
+    6: "Ditolak"
+}
+
+const SIDANG_STATUS = {
+    1: "Baru",
+    2: "Fix",
+    3: "Lulus",
+    4: "Selesai",
+    5: "Mengulang"
+}
+
 const sort_sidang_revisi = (a, b) => {
     if (a.revisi_terakhir.status != b.revisi_terakhir.status){
         if (a.revisi_terakhir.status == 2) return -1
