@@ -90,6 +90,10 @@ export default class TolakRevisi extends Vue {
     }
     async tolakRevisi(){
         try{
+            if (!this.detail){
+                this.$EventBus.$emit('error', {"message": "Must provide detail"});
+                return
+            }
             if (this.file){
                 let data = await revisi.upload_file_penolakan(this.revisi.id, this.file)
             }
