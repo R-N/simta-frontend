@@ -54,7 +54,48 @@ const terima_revisi = async (revisiId) => {
             return data
         })
 }
-const exports = { fetch_revisi, terima_revisi }
 
-export { fetch_revisi, terima_revisi }
+const tolak_revisi = async (revisiId, detail, file_name=null) => {
+    if (!store.mystore.apiKey)
+        await auth.login()
+    return axios
+        .post(
+            `http://localhost:5000/revisi/${revisiId}/tolak`,
+            {
+                detail,
+                file_name
+            },
+            { 
+                headers: {"Authorization" : `Bearer ${store.mystore.apiKey}`}
+            }
+        )
+        .then(response => {
+            let data = response.data
+            return data
+        })
+}
+
+const upload_file_penolakan = async(revisiId, file) => {
+    var formData = new FormData();
+    formData.append("file", file);
+    return axios
+        .put(
+            `http://localhost:5000/revisi/${revisiId}/penolakan/file`, 
+            formData, 
+            {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    "Authorization" : `Bearer ${store.mystore.apiKey}`
+                }
+            }
+        )
+        .then(response => {
+            let data = response.data
+            return data
+        })
+}
+
+const exports = { fetch_revisi, terima_revisi, tolak_revisi, upload_file_penolakan }
+
+export { fetch_revisi, terima_revisi, tolak_revisi, upload_file_penolakan }
 export default exports

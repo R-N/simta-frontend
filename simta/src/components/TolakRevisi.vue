@@ -21,35 +21,35 @@
             <v-card-text>
                 <v-container>
                     <v-row>
-                        <v-col>
+                        <v-col class="py-0">
                             <p>Silahkan isi feedback penolakan.</p>
                         </v-col>
                     </v-row>
-                    <v-row>
-                        <v-col
+                    <v-row class="my-0">
+                        <v-col class="py-0"
                         >
                             <v-textarea
                                 outlined
                                 name="feedback-penolakan"
                                 label="Feedback"
+                                v-model="detail"
+                                hide-details
                             />
                         </v-col>
                     </v-row>
-                    <v-row>
-                        <v-col>
-                            <v-btn
-                                rounded
-                                color="primary"
-                                class="mr-2"
-                            >
-                                Upload File
-                            </v-btn>
-                            <span>Belum ada file dipilih</span>
+                    <v-row class="my-0">
+                        <v-col class="py-0">
+                            <v-file-input
+                                accept=".pdf,.docx,.doc,.jpg,.png,.zip,.rar"
+                                label="Upload File"
+                                show-size
+                                v-model="file"
+                            ></v-file-input>
                         </v-col>
                     </v-row>
-                    <v-row>
-                        <v-col>
-                            <p><v-icon>mdi-alert</v-icon> Proses ini tidak dapat dibatalkan.</p>
+                    <v-row class="my-0">
+                        <v-col class="py-0">
+                            <p class="my-0"><v-icon>mdi-alert</v-icon> Proses ini tidak dapat dibatalkan.</p>
                         </v-col>
                     </v-row>
                 </v-container>
@@ -64,7 +64,7 @@
                 </v-btn>
                 <v-btn
                     text
-                    @click="dialog = false"
+                    @click="tolakRevisi"
                 >
                     Tolak
                 </v-btn>
@@ -75,9 +75,25 @@
 
 <script>
 import { Vue, Component, Prop } from 'vue-property-decorator'
+import revisi from "@/models/revisi"
 @Component({
 })
 export default class TolakRevisi extends Vue {
     dialog = false
+	@Prop({ default: null }) revisi
+    detail = ""
+    file = null
+    get fileName(){
+        if (this.file)
+            return this.file.name
+        return null
+    }
+    async tolakRevisi(){
+        if (this.file){
+            let data = await revisi.upload_file_penolakan(this.revisi.id, this.file)
+        }
+        let data = await revisi.tolak_revisi(this.revisi.id, this.detail, this.fileName)
+        window.location.reload(true)
+    }
 }
 </script>

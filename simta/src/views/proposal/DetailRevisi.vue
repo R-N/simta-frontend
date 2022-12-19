@@ -49,7 +49,7 @@
                             <v-col>
                             <v-btn class="mr-1" rounded outlined>POMITS</v-btn>
                             <v-btn class="mr-1" rounded outlined>Nilai</v-btn>
-                            <tolak-revisi />
+                            <tolak-revisi :revisi="revisi" />
                             <terima-revisi :revisi="revisi" />
                             </v-col>
                         </v-row>
@@ -71,7 +71,7 @@
                             <v-col sm=3 class="pb-1 pt-0">Tanggal:</v-col>
                             <v-col class="pb-1 pt-0">{{this.revisi.updated_at}}</v-col>
                         </v-row>
-                        <v-row>
+                        <v-row v-if="this.penolakan.file_name">
                             <v-col sm=3 class="pb-1 pt-0">File:</v-col>
                             <v-col class="pb-1 pt-0">{{this.penolakan.file_name}}</v-col>
                         </v-row>
