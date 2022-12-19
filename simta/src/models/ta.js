@@ -42,6 +42,19 @@ const fetch_sidang = async () => {
                     x.revisi_terakhir.status_str = REVISI_STATUS[x.revisi_terakhir.status]
                 }
             })
+            data.sort((a, b) => {
+                if (a.status != b.status){
+                    if (a.status == 2) return -1
+                    if (b.status == 2) return 1
+                    return a.status - b.status
+                }
+                if (a.created_at != b.created_at){
+                    return a.created_at < b.created_at
+                }
+                if (a.ta.mhs.id != b.ta.mhs.id){
+                    return a.ta.mhs.name < b.ta.mhs.name
+                }
+            })
             return data
         })
 }
