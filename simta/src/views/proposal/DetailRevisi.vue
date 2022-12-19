@@ -50,7 +50,7 @@
                             <v-btn class="mr-1" rounded outlined>POMITS</v-btn>
                             <v-btn class="mr-1" rounded outlined>Nilai</v-btn>
                             <tolak-revisi />
-                            <terima-revisi />
+                            <terima-revisi :revisi="revisi" />
                             </v-col>
                         </v-row>
                     </v-card-text>
@@ -158,5 +158,6 @@ export default class DetailRevisi extends Vue {
         this.setRevisi(index)
         window.scrollTo(0,0);
     }
+
 }
 </script>

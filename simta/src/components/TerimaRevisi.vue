@@ -33,7 +33,7 @@
                 </v-btn>
                 <v-btn
                     text
-                    @click="dialog = false"
+                    @click="terimaRevisi"
                 >
                     Terima
                 </v-btn>
@@ -44,9 +44,15 @@
 
 <script>
 import { Vue, Component, Prop } from 'vue-property-decorator'
+import revisi from "@/models/revisi"
 @Component({
 })
 export default class TerimaRevisi extends Vue {
+	@Prop({ default: null }) revisi;
     dialog = false
+    async terimaRevisi(){
+        let data = await revisi.terima_revisi(this.revisi.id)
+        window.location.reload(true)
+    }
 }
 </script>

@@ -37,7 +37,24 @@ const fetch_revisi = async (sidangId) => {
             return data
         })
 }
-const exports = { fetch_revisi }
 
-export { fetch_revisi }
+const terima_revisi = async (revisiId) => {
+    if (!store.mystore.apiKey)
+        await auth.login()
+    return axios
+        .post(
+            `http://localhost:5000/revisi/${revisiId}/terima`,
+            {},
+            { 
+                headers: {"Authorization" : `Bearer ${store.mystore.apiKey}`}
+            }
+        )
+        .then(response => {
+            let data = response.data
+            return data
+        })
+}
+const exports = { fetch_revisi, terima_revisi }
+
+export { fetch_revisi, terima_revisi }
 export default exports
