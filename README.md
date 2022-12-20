@@ -5,9 +5,6 @@ Needs backend: https://github.com/R-N/simta-backend
 
 Sample deployment: https://simta-frontend.vercel.app/
 
-This frontend app by default uses http://localhost:5000 for the backend address.
-Set VUE_APP_BACKEND_ADDRESS environment variable to change it.
-
 Requirement:
 - node & npm
 - yarn
@@ -22,5 +19,8 @@ yarn config set ignore-engines true
 npm install
 npm run serve
 ```
+
+This frontend app by default uses http://localhost:5000 for the backend address.
+Set VUE_APP_BACKEND_ADDRESS environment variable to change it.
 
 When diploying this, you need to set the project root to the simta folder.
