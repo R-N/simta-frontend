@@ -4,8 +4,8 @@ Made with Vue 2. By default runs on http://localhost:8080 .
 Needs backend: https://github.com/R-N/simta-backend
 
 Sample deployment: 
-- https://simta-frontend.vercel.app/
-- https://simta-frontend-6tr2uzkt1-xstinky12-gmailcom.vercel.app/
+- https://simta-frontend.vercel.app
+- https://simta-frontend-6tr2uzkt1-xstinky12-gmailcom.vercel.app
 
 Requirement:
 - node & npm
