@@ -21,3 +21,5 @@ yarn config set ignore-engines true
 npm install
 npm run serve
 ```
+
+When diploying this, you need to set the project root to the simta folder.
