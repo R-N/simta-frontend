@@ -15,6 +15,7 @@ Requirement:
 
 Prototype figma: https://www.figma.com/proto/yHQZTSQ6zMPzECd3RONrCe/Tugas-PPS-2?node-id=52701%3A25393&scaling=contain&page-id=52696%3A23854&starting-point-node-id=52701%3A25393
  
+Executing / running:
 ```
 cd simta
 yarn config set ignore-engines true
