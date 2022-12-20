@@ -6,10 +6,10 @@ Needs backend: https://github.com/R-N/simta-backend
 Sample deployment: 
 - https://simta-frontend.vercel.app
 - https://simta-frontend-xstinky12-gmailcom.vercel.app
-- https://simta-frontend-git-main-xstinky12-gmailcom.vercel.app/
+- https://simta-frontend-git-main-xstinky12-gmailcom.vercel.app
 - https://simta-frontend-6tr2uzkt1-xstinky12-gmailcom.vercel.app
 
-(You may need to open the backend first and wait a little for it to boot: https://simta-backend.vercel.app/ )
+(You may need to open the backend first and wait a little for it to boot: https://simta-backend.vercel.app )
 
 Requirement:
 - node & npm
