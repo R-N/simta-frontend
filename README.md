@@ -5,6 +5,8 @@ Needs backend: https://github.com/R-N/simta-backend
 
 Sample deployment: 
 - https://simta-frontend.vercel.app
+- https://simta-frontend-xstinky12-gmailcom.vercel.app
+- https://simta-frontend-git-main-xstinky12-gmailcom.vercel.app/
 - https://simta-frontend-6tr2uzkt1-xstinky12-gmailcom.vercel.app
 
 Requirement:
