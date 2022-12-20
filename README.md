@@ -4,10 +4,16 @@ Made with Vue 2. By default runs on http://localhost:8080 .
 Needs backend: https://github.com/R-N/simta-backend
 
 Sample deployment: 
+
+Vercel:
 - https://simta-frontend.vercel.app
 - https://simta-frontend-xstinky12-gmailcom.vercel.app
 - https://simta-frontend-git-main-xstinky12-gmailcom.vercel.app
 - https://simta-frontend-6tr2uzkt1-xstinky12-gmailcom.vercel.app
+
+Netlify:
+- https://charming-sfogliatella-1de435.netlify.app/
+- https://63a1a4ac241d2b03b30d3c9a--charming-sfogliatella-1de435.netlify.app/
 
 (You may need to open the backend first and wait a little for it to boot: https://simta-backend.vercel.app )
 
