@@ -34,7 +34,7 @@ npm run serve
 This frontend app by default uses http://localhost:5000 for the backend address.
 Set VUE_APP_BACKEND_ADDRESS environment variable to change it.
 
-When diploying this, you need to set the project root to the simta folder.
+When deploying this, you need to set the project root to the simta folder.
 
 There's also a tauri app for windows in the releases: https://github.com/R-N/simta-frontend/releases/tag/0.0.2
 
