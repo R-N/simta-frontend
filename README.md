@@ -18,6 +18,13 @@ npm install
 npm run serve
 ```
 
+If install still errors due to engine node > 17, try "yarn install --ignore-engines" instead
+```
+cd simta
+yarn install --ignore-engines
+npm run serve
+```
+
 This frontend app by default uses http://localhost:5000 for the backend address.
 Set VUE_APP_BACKEND_ADDRESS environment variable to change it.
 
